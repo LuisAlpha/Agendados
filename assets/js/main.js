@@ -16,8 +16,7 @@ document.addEventListener('DOMContentLoaded',function(event) {
 				contenedor.dataset.folios = text.folios[index];
 				contenedor.addEventListener("click",recuperaAgendados,false);
 				paneles.appendChild(contenedor);
-
-				console.log(response[elemento]	+	' '	+	text.folios[index]+ ' ' + text.total[index]);
+				//console.log(response[elemento]	+	' '	+	text.folios[index]+ ' ' + text.total[index]);
 			});
 		});
 	});
@@ -47,4 +46,13 @@ function DetallesRegistro(event){
 }
 function TomarRegistro(event){
 	console.log(event);
+} 
+
+function enlazarllamada(element){
+	console.log('owo');
+	agente = element.dataset.agente;
+	telefono = element.dataset.telefono;
+	return 
+	fetch("http://172.30.27.4/marcaciones_externas/re.php?telefono=" + telefono + "&agente="+agente)
+	.then(request=>{console.log('x2');return request.text()}).then(text => {console.log(text); return text;}).catch(error => console.log('error  : ' + error));
 }
