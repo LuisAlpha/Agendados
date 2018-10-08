@@ -48,11 +48,31 @@ function TomarRegistro(event){
 	console.log(event);
 } 
 
-function enlazarllamada(element){
-	console.log('owo');
+function controlador_llamadas(element){
 	agente = element.dataset.agente;
 	telefono = element.dataset.telefono;
-	return 
-	fetch("http://172.30.27.4/marcaciones_externas/re.php?telefono=" + telefono + "&agente="+agente)
-	.then(request=>{console.log('x2');return request.text()}).then(text => {console.log(text); return text;}).catch(error => console.log('error  : ' + error));
+	if (element.innerHTML == 'Llamar') {
+		element.innerHTML = 'Marcando';
+		enlazar_llamada( telefono, agente ).then(request => {
+			element.dataset.canal = request.canal;
+			element.innerHTML = 'Colgar';
+		});
+	}else if(element.innerHTML == 'Colgar' && element.dataset.canal != 'undefined'){
+		colgar_llamada(element.dataset.canal);
+		element.innerHTML == 'Llamar';
+	}else{
+
+	}
+}
+
+function enlazar_llamada(telefono,agente){
+	return fetch("http://172.30.27.4/marcaciones_externas/re.php?telefono=" + telefono + "&agente="+agente)
+	.then((request)=>{
+		return  request.json();
+	}).catch(error => console.log('error  : ' + error));
+}
+
+function colgar_llamada(canal){
+	console.log("Colgando canal :" + canal);
+	fetch("http://172.30.27.4/marcaciones_externas/co.php?canal=" + canal).then(request => {return request.text();}).then(text => console.log(text)).catch(error =>{console.log(error)});
 }

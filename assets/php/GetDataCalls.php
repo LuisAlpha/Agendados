@@ -28,7 +28,7 @@ $ResultGetContac = mysql_query($SqlGetContactData,	$conexion40);
 			?>
 			<tr>
 				<td><?php echo $ArrayContac['Contacto']; ?></td>
-				<td><button data-telefono ="<?php echo $ArrayContac['telefono']; ?>" data-agente ="<?php echo $_SESSION['idEmpleado'] ?>" onClick="enlazarllamada(this)">Llamar</button></td>
+				<td><button data-telefono ="<?php echo $ArrayContac['telefono']; ?>" data-agente ="<?php echo $_SESSION['idEmpleado'] ?>" onClick="controlador_llamadas(this)">Llamar</button></td>
 				<td><button data-lastCall ="<?php echo $ArrayContac['IdLastCall'] ?>" onClick="DetallesRegistro(this)">Detalles</button></td>
 				<td><button data-idRegistro="<?php echo $ArrayContac['IdRegistro'];?>" onClick="TomarRegistro(this)">Liga</button></td>
 				<td><?php echo $ArrayContac['Fecha_Agendado']; ?></td>
