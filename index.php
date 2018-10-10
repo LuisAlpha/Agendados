@@ -15,11 +15,21 @@ if(isset($_SESSION['idEmpleado'])){
 </head>
 <body>
 	
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal" onclick="CloseModal(this)">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+		</div>
+	</div>
 	<div class="wrapper">
 		<div class="header">Header</div>
 		<div class="campanias"></div>
-		<div class="registros"><h1>Selecciona Una Campaña para revisar tus Agendados por favor.</h1></div>
-	</div>
-	
-</body>
-</html>
+		<div class="registros">
+			<h2>Selecciona Una Campaña para revisar tus Agendados por favor.</h1>
+			</div>
+			
+		</div>
+	</body>
+	</html>

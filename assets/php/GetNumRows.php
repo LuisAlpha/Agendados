@@ -9,9 +9,9 @@ COUNT(*)as total,
 GROUP_concat(IdLastCall)as Folios
 from EsquemaGeneral.baseclientegeneral 
 where 
-Status ='llamar mas tarde' 
-and 
 Agente ='".$_SESSION['idEmpleado']."'
+and IdLastCall is not null
+and datediff(Fecha_Agendado,curdate()) BETWEEN -7 and  7 
 GROUP by Campania;
 ";
 
