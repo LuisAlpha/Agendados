@@ -17,7 +17,7 @@ if(isset($_SESSION['idEmpleado'])){
 	
 
 	<!-- The Modal -->
-	<div id="myModal" class="modal" onclick="CloseModal(this)">
+	<div id="myModal" class="modal" onclick="CloseModal(this)" scroll='no'>
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close">&times;</span>
